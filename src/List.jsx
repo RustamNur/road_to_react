@@ -1,39 +1,23 @@
 import React from 'react'
+import Item from './Item'
 
 
-const list = [
-    {
-    title: 'React Learning with Jordan',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walker',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-    },
-    {
-    title: 'Redux Learning with Dan',
-    url: 'https://redux.js.org/',
-    author: 'Dan Abramov, Andrew Clark',
-    num_comments: 2,
-    points: 5,
-    objectID: 1,
-    },
-]
+
     
 const arr  = [1,2,3,4,5,6,7,8,9]
 
-const List = () => {
+const List = (props) => {
   return (
     <div>
           <ul>
-              {list.map(item=>{
+              {props.list.map(item=>{
                   return (
-                    <li key={item.objectID}>
-                        {item.title}
-                    </li>
-                  )
+                    <Item key={item.objectID} item={item}/>
+                   )
               })}
           </ul>
+
+          <h3>{props.title}</h3>
 
           <ul>
               {arr.map((elem,index)=>{

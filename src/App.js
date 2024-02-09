@@ -54,7 +54,7 @@ function App() {
           })}
       </ul>
                 
-      <List />
+      <List list={list}/>
                   
                   
   </div>
