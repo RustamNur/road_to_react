@@ -1,33 +1,63 @@
 import React from 'react'
-import Item from './Item'
+
 
 
 
     
-const arr  = [1,2,3,4,5,6,7,8,9]
+const list = [
+    {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    author: 'Jordan Walker',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+    },
+    {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+    },
+    {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Ali hoja',
+    num_comments: 2,
+    points: 5,
+    objectID: 2,
+    },
+    {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Polat Almedar',
+    num_comments: 2,
+    points: 5,
+    objectID: 3,
+    },
+    {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'VVPutin',
+    num_comments: 2,
+    points: 5,
+    objectID: 4,
+    },
+  ]
 
 const List = (props) => {
   return (
     <div>
-          <ul>
-              {props.list.map(item=>{
-                  return (
-                    <Item key={item.objectID} item={item}/>
-                   )
+         <ul>
+              {list.filter(item => item.author.toLowerCase().includes(props.text.toLowerCase())).map(elem => {
+                  return (<li key={elem.objectID}>
+                      {elem.author}
+                  </li>)
               })}
           </ul>
-
-          <h3>{props.title}</h3>
-
-          <ul>
-              {arr.map((elem,index)=>{
-                  return (
-                        <li key={index}>
-                            {elem} - {index} = {elem-index}
-                        </li>
-                  )
-              })}
-          </ul>
+         
     </div>
   )
 }
