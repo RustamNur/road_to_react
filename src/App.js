@@ -1,5 +1,8 @@
 
 import './App.css';
+import './List'
+import List from './List';
+import Search from './Search';
 
 const list = [
   {
@@ -18,44 +21,47 @@ const list = [
   points: 5,
   objectID: 1,
   },
-  ]
-
+]
+  
 function App() {
-    return (
-    <div className="App">
+  return (
+  <div className="App">
       <h1>My Hacker Stories</h1>
-<label htmlFor="search">Search: </label>
-<input id="search" type="text" />
-<hr />
-<ul>
+      <Search/>
+      <hr />
+      <ul>
           {list.map(item => {
-            return (
-              <li key={item.objectID} style={{listStyle:'none'}}>
-                {item.title}
-          </li>
-        )
-      })}
-        </ul>
-        
-        <ul>
-{list.map(function (item) {
-return (
-<li key={item.objectID}>
-<span style={{marginRight:'10px'}}>
-<a href={item.url}>{item.title}</a>
-</span>
-<span style={{marginRight:'10px'}}>{item.author}</span>
-<span style={{marginRight:'10px'}}>{item.num_comments}</span>
-<span style={{marginRight:'10px'}}>{item.points}</span>
-</li>
-);
-})}
-</ul>
-          
-     
-    </div>
+              return (
+                <li key={item.objectID}>
+                    {item.title}
+                </li>
+                  )
+                })}
+      </ul>
+                  
+      <ul>
+          {list.map(function (item) {
+          return (
+            <li key={item.objectID}>
+            <span style={{marginRight:'10px'}}>
+            <a href={item.url}>{item.title}</a>
+            </span>
+            <span style={{marginRight:'10px'}}>{item.author}</span>
+            <span style={{marginRight:'10px'}}>{item.num_comments}</span>
+            <span style={{marginRight:'10px'}}>{item.points}</span>
+            </li>
+          );
+          })}
+      </ul>
+                
+      <List />
+                  
+                  
+  </div>
   );
 }
+
+
 
 export default App;
 
