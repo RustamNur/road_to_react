@@ -3,6 +3,8 @@ import './App.css';
 import './List'
 import List from './List';
 import Search from './Search';
+import Controlled from './Controlled';
+import UncontrolledComponent from './Unconrolled';
 
 
 
@@ -15,7 +17,7 @@ function App() {
   setText(event.target.value);
   };
 
-  console.log("Appdagi text", text);
+  // console.log("Appdagi text", text);
   // const searchedStories = list.filter(story=> {
   // return story.title.toLowerCase().includes(text.toLowerCase());
   // });
@@ -26,6 +28,9 @@ function App() {
       <hr />
       <Search text={text} onSearchChange={handleSearch}/>
       <List text={text} />
+      <hr />
+      <Controlled />
+      <UncontrolledComponent/>
   </div>
   );
 }
