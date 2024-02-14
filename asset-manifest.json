@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/road_to_react/static/css/main.f855e6bc.css",
-    "main.js": "/road_to_react/static/js/main.9652e5ed.js",
+    "main.js": "/road_to_react/static/js/main.b2ab3f20.js",
     "index.html": "/road_to_react/index.html",
     "main.f855e6bc.css.map": "/road_to_react/static/css/main.f855e6bc.css.map",
-    "main.9652e5ed.js.map": "/road_to_react/static/js/main.9652e5ed.js.map"
+    "main.b2ab3f20.js.map": "/road_to_react/static/js/main.b2ab3f20.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.9652e5ed.js"
+    "static/js/main.b2ab3f20.js"
   ]
 }
