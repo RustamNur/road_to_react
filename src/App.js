@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import './List'
 import List from './List';
@@ -10,12 +10,29 @@ import UncontrolledComponent from './Unconrolled';
 
 
 
+
 function App() {
-  const [text, setText] = React.useState('');
+  const [text, setText] = useState(localStorage.getItem('text') || 'React');
+
+  useEffect(() => {
+    localStorage.setItem('text',text) 
+  },[text])
   
   const handleSearch = (event) => {
-  setText(event.target.value);
+    setText(event.target.value);
+    
   };
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleClicked = () => {
+    setClicked(true);
+    alert("You are clicked")
+  }
+  const handleClicked1 = () => {
+    setClicked(false);
+    alert("You aren't clicked")
+  }
 
   // console.log("Appdagi text", text);
   // const searchedStories = list.filter(story=> {
@@ -30,7 +47,10 @@ function App() {
       <List text={text} />
       <hr />
       <Controlled />
-      <UncontrolledComponent/>
+      <UncontrolledComponent /><hr /><br /><br /><br />
+      <button onClick={handleClicked}>Show me</button>
+      <button onClick={handleClicked1}>Hidden</button>
+      {clicked && <p>You are Clicked , bro</p>}
   </div>
   );
 }

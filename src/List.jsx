@@ -40,7 +40,7 @@ const list = [
     {
     title: 'Redux',
     url: 'https://redux.js.org/',
-    author: 'VVPutin',
+    author: 'Tom Cruise',
     num_comments: 2,
     points: 5,
     objectID: 4,
@@ -48,12 +48,17 @@ const list = [
   ]
 
 const List = (props) => {
+  const {text} = props
   return (
     <div>
          <ul>
-              {list.filter(item => item.author.toLowerCase().includes(props.text.toLowerCase())).map(elem => {
+        {list.filter(item => item.title.toLowerCase().includes(text.toLowerCase())).map((elem) => {
                   return (<li key={elem.objectID}>
-                      {elem.author}
+                    {elem.author} &nbsp;
+                    {elem.title} &nbsp;
+                    {elem.url} &nbsp;
+                    {elem.num_comments} &nbsp;
+                    {elem.points} &nbsp;
                   </li>)
               })}
           </ul>

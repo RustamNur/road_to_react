@@ -1,8 +1,7 @@
 import React from 'react'
 
 const Search = (props) => {
-    
-
+   const {text,onSearchChange} = props
 
   return (
     <div>
@@ -10,8 +9,8 @@ const Search = (props) => {
               <input
                   name='search'
                   placeholder='which technology?'
-                  value={props.text}
-                  onChange={props.onSearchChange}
+                  value={text}
+                  onChange={onSearchChange}
               />
           </form> 
     </div>
