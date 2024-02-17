@@ -1,68 +1,67 @@
-import React, {useEffect, useState} from 'react';
-import './App.css';
-import './List'
-import List from './List';
-import Search from './Search';
-import Controlled from './Controlled';
-import UncontrolledComponent from './Unconrolled';
+import React, { useState } from 'react'
+import './App.css'
 
-
-
-
-
-
-function App() {
-  const [text, setText] = useState(localStorage.getItem('text') || 'React');
-
-  useEffect(() => {
-    localStorage.setItem('text',text) 
-  },[text])
+const deves = [
+  {
+    title: 'React',
+    author: 'Jordan Walke',
+    rating: 5,
+    id:1
+  },
+  {
+    title: 'Redux',
+    author: 'Dan Abramov',
+    rating: 4.5,
+    id:2
+  },
+  {
+    title: 'Javascript',
+    author: 'Brandon Eich',
+    rating: 5.5,
+    id:3
+  },
+  {
+    title: 'Java',
+    author: 'Toshmat',
+    rating: 4,
+    id:4
+  },
+  {
+    title: 'Phyton',
+    author: 'Eshmat',
+    rating: 5.5,
+    id:5
+  },
+]
+const App = () => {
+  const [text, setText] = useState('Rustam')
+  const [list,setList] = useState(deves)
   
-  const handleSearch = (event) => {
-    setText(event.target.value);
-    
-  };
-
-  const [clicked, setClicked] = useState(false);
-
-  const handleClicked = () => {
-    setClicked(true);
-    alert("You are clicked")
-  }
-  const handleClicked1 = () => {
-    setClicked(false);
-    alert("You aren't clicked")
+  const handleChange = () => {
+    setText('Abu Khadija')
   }
 
-  // console.log("Appdagi text", text);
-  // const searchedStories = list.filter(story=> {
-  // return story.title.toLowerCase().includes(text.toLowerCase());
-  // });
-
+  const handleDelete = id => {
+    setList(list.filter(elem => elem.id !== id))
+  }
   return (
-  <div className="App">
-      <h1>My Hacker Stories</h1>
+    <div className='App'>
+      <h2>My name is {text}</h2>
+      <button onClick={handleChange}>Change my name</button>
+      
       <hr />
-      <Search text={text} onSearchChange={handleSearch}/>
-      <List text={text} />
-      <hr />
-      <Controlled />
-      <UncontrolledComponent /><hr /><br /><br /><br />
-      <button onClick={handleClicked}>Show me</button>
-      <button onClick={handleClicked1}>Hidden</button>
-      {clicked && <p>You are Clicked , bro</p>}
-  </div>
-  );
+      <ul>
+        {list.map(item => {
+          return (
+            <li key={item.id}>
+              {item.title} - {item.author}
+              <button onClick={()=>handleDelete(item.id)}>Delete</button>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
 }
 
-
-
-export default App;
-
-/**
- * React will display each item now, but you can still improve your code so React handles dynamic lists
-more gracefully. By assigning a --key-- attribute to each list item’s element, React can identify items if
-the list changes (e.g. re-ordering). The --key-- isn’t necessary yet in our current situation, however, it’s
-a best practice to use it from the start. Fortunately, our items come with an identifier:
- */
-
+export default App
