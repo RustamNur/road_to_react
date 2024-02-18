@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
+import Deleted from './Deleted'
+import ChangeContent from './ChangeContent'
 
 const deves = [
   {
@@ -35,11 +37,12 @@ const deves = [
 ]
 const App = () => {
   const [text, setText] = useState('Rustam')
-  const [list,setList] = useState(deves)
+  const [list, setList] = useState(deves)
+  const [showContent, setShowContent] = useState(true);
+
   
-  const handleChange = () => {
-    setText('Abu Khadija')
-  }
+  
+  
 
   const handleDelete = id => {
     setList(list.filter(elem => elem.id !== id))
@@ -47,11 +50,16 @@ const App = () => {
   return (
     <div className='App'>
       <h2>My name is {text}</h2>
-      <button onClick={handleChange}>Change my name</button>
+      <button onClick={()=>setText('Abu Khadija')}>Change my name</button>
+      <button onClick={()=>setText('Rustam')}>Change my name</button>
       
       <hr />
+     {showContent && <button onClick={()=>setShowContent(false)}>Hide Content</button>}
+     {!showContent && <button onClick={()=>setShowContent(true)}>show Content</button>}
+      
       <ul>
-        {list.map(item => {
+        {showContent && <div>
+          {list.length === 0 && <h4>No data yet :(</h4> }{list.map(item => {
           return (
             <li key={item.id}>
               {item.title} - {item.author}
@@ -59,8 +67,15 @@ const App = () => {
             </li>
           )
         })}
+        </div>}
       </ul>
+      <br />
+      <hr />
+      <Deleted list={list} setList={setList} />
+      <ChangeContent />
+      <br /><br /><br /><br /><br />
     </div>
+
   )
 }
 
